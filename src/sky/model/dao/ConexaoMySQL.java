@@ -24,7 +24,7 @@ public class ConexaoMySQL {
 			connection = DriverManager.getConnection("jdbc:mysql://" + Configuration.MYSQL_SERVER + ":"+ Configuration.MYSQL_PORT +"/" + Configuration.MYSQL_DB
 										,Configuration.MYSQL_USER
 										,Configuration.MYSQL_PASS);
-			connection.setAutoCommit(true);
+			connection.setAutoCommit(false);
 			logger.info("====== [MYSQL Conectado] ======");
 			logger.info("\t "+ Configuration.MYSQL_SERVER + ":" + Configuration.MYSQL_PORT +"/"+ Configuration.MYSQL_DB );
 			logger.info("\t "+ connection.hashCode() );

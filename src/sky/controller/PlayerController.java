@@ -20,9 +20,21 @@ public class PlayerController {
 			for(Player p : players){
 				dao.inserirPlayer(p,conexao);
 			}
+			
 		} catch (SQLException e) {
+			try {
+				if(conexao!=null)
+				conexao.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
 		}finally {
+			try {
+				conexao.commit();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			ConexaoMySQL.fechaConexao();
 		}
 	}
